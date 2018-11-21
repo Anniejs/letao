@@ -91,6 +91,13 @@ a:active {
 
 }
 /* 右侧内容部分 */
+.lt_main{
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  padding-left: 180px;
+
+}
 
 .lt_main .lt_topbar{
   height: 50px;
@@ -103,6 +110,7 @@ a:active {
   right: 0;
   /* 往右边挤出来180px的位置留给左边的侧边栏 */
   padding-left: 180px;
+  
   z-index: 666;
 }
 /* lt_main .lt_topbar .icon_menu{
@@ -119,8 +127,11 @@ a:active {
   text-align: center;
 }
 
-/* lt_main .lt_topbar .icon_logout{
-  position: absolute;
-  right: 0;
-  top: 0;
-} */
+.breadcrumb {
+  margin-top: 20px;
+}
+.echarts_left,
+.echarts_right{
+  width: 48%;
+  height: 400px;
+}
