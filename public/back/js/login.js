@@ -29,6 +29,7 @@ $(function() {
             max: 6,
             message: "用户名长度必须是 2-6 位"
           },
+          //回调提示
           callback: {
             message: "用户名不存在"
           }
@@ -67,16 +68,24 @@ $("#form").on("success.form.bv", function(e){
     data:$("#form").serialize(),
     dataType:"json",
     success:function(info){
-      console.log(info);
+      // console.log(info);
       //判断发送是否成功
       if(info.success){
         location.href = "index.html";
       }
       if(info.error === 1000){
-        alert("用户名不存在");
+        //错误码为1000时说明用户名不存在
+          // 用户名不存在
+          // 参数1: 字段名称
+          // 参数2: 校验状态
+          // 参数3: 配置规则, 用于提示
+        // alert("用户名不存在");
+        $('#form').data("bootstrapValidator").updateStatus("username", "INVALID", "callback")
       }
       if(info.error ===1001){
-        alert("密码错误");
+        //错误码为1001时说明密码错误
+        // alert("密码错误");
+        $('#form').data("bootstrapValidator").updateStatus("password", "INVALID", "callback");
       }
     }
   });
