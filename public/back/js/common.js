@@ -1,4 +1,5 @@
-
+//入口函数
+$(function(){
 // 配置禁用小圆环
 NProgress.configure({ showSpinner: false });
 
@@ -26,28 +27,6 @@ $(document).ajaxStop(function() {
 });
 
 
-// 在一进入页面进行登录状态获取
-// 如果后端响应头中设置了 Content-Type: application/json
-// jquery 会自动识别, 将返回数据类型, 当成json字符串解析成对象
-if ( location.href.indexOf("login.html") === -1 ) {
-  $.ajax({
-    url: "/employee/checkRootLogin",
-    type: "get",
-    success: function( info ) {
-      console.log( info )
-      if ( info.success ) {
-        console.log( "登陆了" );
-        // 啥也不用干
-      }
-
-      if ( info.error === 400 ) {
-        // 进行拦截, 拦截到登录页
-        location.href = "login.html";
-      }
-    }
-  })
-}
-
 
 //功能1-进行二级分类切换
 $(".category").click(function(){
@@ -55,7 +34,7 @@ $(".category").click(function(){
 });
 
 
-//2-顶部菜单栏切换显示
+//功能2-顶部菜单栏切换显示
 $(".icon_menu").click(function(){
   
   $(".lt_aside").toggleClass("hidemenu");
@@ -63,14 +42,18 @@ $(".icon_menu").click(function(){
   $(".lt_topbar").toggleClass("hidemenu");
 });
 
-//3-点击图标退出模态框
 
+//功能3-点击图标退出模态框
 
+//3-1 点击图标显示模态框
 $(".icon_logout").click(function(){
-  $("#logoutModal").modal(show);
+  $("#logoutModal").modal("show");
 })
 
+
+//3-2 点击退出按钮，让整个用户管理退出，直接跳转到登录页面
 $(".logout").click(function(){
+  //调用接口，让后台销毁当前用户的登录状态
   $.ajax({
     url:"/employee/employeeLogout",
     type:"get",
@@ -80,4 +63,5 @@ $(".logout").click(function(){
       location.href = "login.html";
     }
   })
+})
 })

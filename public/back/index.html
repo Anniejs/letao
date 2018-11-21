@@ -86,9 +86,10 @@
 
     <!-- 登录退出模态框 -->
     <div class="modal fade" id="logoutModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
+                <!-- bootstrap 里面自带的关闭图标  通过配置的data-dismiss =“modal”可以直接关闭模态框 -->
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
             </div>
@@ -109,6 +110,7 @@
     <script src="lib/nprogress/nprogress.js"></script>
     <script src="./lib/echarts/echarts.min.js"></script>
     <script src="./js/common.js"></script>
+    <script src="./js/isLogin.js"></script>
     <script src="./js/index.js"></script>
     
    <script>
