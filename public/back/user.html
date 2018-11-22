@@ -88,56 +88,79 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15757771111</td>
-                            <td>正常</td>
-                            <td><button class="btn btn-danger">禁用</button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15757771111</td>
-                            <td>正常</td>
-                            <td><button class="btn btn-danger">禁用</button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15757771111</td>
-                            <td>正常</td>
-                            <td><button class="btn btn-danger">禁用</button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15757771111</td>
-                            <td>正常</td>
-                            <td><button class="btn btn-danger">禁用</button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15757771111</td>
-                            <td>正常</td>
-                            <td><button class="btn btn-danger">禁用</button></td>
-                        </tr>
+                        <!-- 准备一个坑 -->
                     </tbody>
                 </table>
 
-
-                <!-- 准备一个分页容器 -->
+                <!-- 准备一个分页容器 居右 -->
                 <div class="text-right">
                     <ul class="pagination">
 
                     </ul>
                 </div>
             </div>
-
-
         </div>
     </div>
+    <!-- 启用和禁用模态框 -->
+    <div class="modal fade" id="userModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- bootstrap 里面自带的关闭图标  通过配置的data-dismiss =“modal”可以直接关闭模态框 -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id ="submitBtn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 登录退出模态框 -->
+    <div class="modal fade" id="logoutModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- bootstrap 里面自带的关闭图标  通过配置的data-dismiss =“modal”可以直接关闭模态框 -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary logout">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 准备模板引擎用来渲染用户管理页面的数据 -->
+    <script type="text/html" id="tmp">
+        {{ each rows v i }}
+        <tr>
+            <td>{{ i+1 + (page-1)*size }}</td>
+            <td>{{ v.username }}</td>
+            <td>{{ v.mobile }}</td>
+            <td>{{ v.isDelete ===1? "正常" : "禁用" }}</td>
+            <td data-id = {{ v.id }}>
+                {{ if v.isDelete ===1}}
+                <button class="btn btn-danger">禁用</button>
+                {{else}}
+                <button class="btn btn-success">启用</button>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+
 
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -145,6 +168,7 @@
     <script src="lib/nprogress/nprogress.js"></script>
     <script src="./lib/echarts/echarts.min.js"></script>
     <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
     <script src="./js/user.js"></script>
