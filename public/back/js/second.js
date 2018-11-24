@@ -152,7 +152,7 @@ $(function () {
       success: function (info) {
         console.log(info);
         //关闭模态框
-        $("#addModal").modal("show");
+        $("#addModal").modal("hide");
         //重置表单里的内容和样式
         $('#form').data("bootstrapValidator").resetForm(true);
         currentPage = 1;
