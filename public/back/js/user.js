@@ -16,7 +16,6 @@ $(function () {
         page: currentPage,
         pageSize: pageSize
       },
-
       success: function (info) {
         console.log(info);
         var htmlStr = template("tmp", info);
